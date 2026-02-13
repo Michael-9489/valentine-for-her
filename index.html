@@ -1,74 +1,131 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Happy Valentine ❤️</title>
+<title>For My Love ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+
 body {
-    margin:0;
-    padding:0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
-    color: white;
-    text-align: center;
+  margin:0;
+  padding:0;
+  background: radial-gradient(circle at top, #1a2a6c, #0f2027);
+  font-family: 'Segoe UI', sans-serif;
+  overflow:hidden;
+  color:white;
+  text-align:center;
 }
+
 .container {
-    padding: 50px 20px;
+  position:relative;
+  top:30%;
+  transform:translateY(-30%);
+  padding:20px;
 }
+
 h1 {
-    font-size: 32px;
-    animation: glow 2s infinite alternate;
+  font-size:36px;
+  animation: glow 2s infinite alternate;
 }
-p {
-    font-size: 18px;
-    line-height: 1.6;
-}
-button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 25px;
-    background: #ff4b5c;
-    color: white;
-    font-size: 16px;
-    margin-top: 20px;
-}
+
 @keyframes glow {
-    from { text-shadow: 0 0 10px #ff4b5c; }
-    to { text-shadow: 0 0 20px #ff416c; }
+  from { text-shadow: 0 0 10px #ff4b5c; }
+  to { text-shadow: 0 0 25px #ff4b5c, 0 0 40px #ff416c; }
 }
-.hidden {
-    display: none;
+
+p {
+  font-size:18px;
+  margin-top:20px;
+  opacity:0.9;
 }
+
+button {
+  margin-top:30px;
+  padding:15px 25px;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  background:linear-gradient(45deg,#ff416c,#ff4b2b);
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover {
+  transform:scale(1.1);
+}
+
+#secret {
+  display:none;
+  margin-top:25px;
+  font-size:20px;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+/* Floating hearts */
+
+.heart {
+  position: absolute;
+  color: #ff4b5c;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(100vh) scale(1);
+    opacity:1;
+  }
+  to {
+    transform: translateY(-10vh) scale(1.5);
+    opacity:0;
+  }
+}
+
 </style>
+
 <script>
-function showMessage() {
-    document.getElementById("secret").style.display = "block";
+function reveal() {
+  document.getElementById("secret").style.display="block";
 }
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(Math.random()*20+10)+"px";
+  heart.style.animationDuration=(Math.random()*3+3)+"s";
+  document.body.appendChild(heart);
+  setTimeout(()=>{heart.remove();},6000);
+}
+
+setInterval(createHeart,300);
 </script>
 </head>
+
 <body>
 
 <div class="container">
-    <h1>Happy Valentine’s Day My Love ❤️</h1>
+  <h1>Happy Valentine’s Day My Love 💙</h1>
 
-    <p>
-        Even though miles separate us,<br>
-        my heart has never felt closer to you.<br><br>
-        Distance is just a test,<br>
-        and we are passing it together.
-    </p>
+  <p>
+    Even if miles keep us apart,<br>
+    you live inside my heartbeat.<br><br>
+    Tonight… this page belongs to you.
+  </p>
 
-    <button onclick="showMessage()">Click for a Surprise 💌</button>
+  <button onclick="reveal()">Click Me ❤️</button>
 
-    <div id="secret" class="hidden">
-        <p>
-        You are my peace.  
-        You are my happiness.  
-        You are my forever choice. 💍<br><br>
-        Until I can hold your hand,  
-        I’ll hold your heart. ❤️
-        </p>
-    </div>
+  <div id="secret">
+    You are not just my love…<br>
+    You are my future.<br><br>
+    Distance is temporary.<br>
+    What I feel for you is permanent. 💍
+  </div>
 </div>
 
 </body>
