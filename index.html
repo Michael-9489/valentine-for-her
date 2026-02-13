@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Shrijaa 💗</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 body{
@@ -13,33 +13,25 @@ margin:0;
 padding:0;
 background:#ffd6e8;
 font-family:'Playfair Display', serif;
-overflow:hidden;
+overflow-x:hidden;
 color:#3a0d1f;
 }
 
-/* Intro screen */
-#intro{
+/* soft romantic glow */
+body::before{
+content:"";
 position:fixed;
-width:100%;
-height:100vh;
-background:#ffc2d1;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-z-index:10;
-cursor:pointer;
-text-align:center;
+width:200%;
+height:200%;
+background:radial-gradient(circle at center,#ffc2d1 0%,#ff8fab 40%,#ffd6e8 70%);
+animation:bgmove 30s linear infinite;
+z-index:-2;
+opacity:0.5;
 }
 
-#intro h1{
-font-family:'Great Vibes', cursive;
-font-size:3rem;
-color:#7a003c;
-}
-
-.hidden{
-display:none;
+@keyframes bgmove{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
 }
 
 .section{
@@ -60,10 +52,23 @@ opacity:1;
 transform:translateY(0);
 }
 
+h1{
+font-family:'Great Vibes', cursive;
+font-size:3rem;
+color:#7a003c;
+margin-bottom:20px;
+}
+
+p{
+font-size:1.15rem;
+max-width:600px;
+line-height:1.8;
+}
+
 .proposal{
 font-family:'Great Vibes', cursive;
-font-size:2.5rem;
-margin:25px 0;
+font-size:2.8rem;
+margin:30px 0;
 color:#a0004d;
 }
 
@@ -72,40 +77,59 @@ padding:12px 26px;
 margin:10px;
 border:none;
 border-radius:30px;
+font-size:1rem;
+cursor:pointer;
 background:#a0004d;
 color:white;
-cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+background:#7a003c;
 }
 
 .response{
+margin-top:25px;
+font-size:1.2rem;
 opacity:0;
 transition:1s;
-margin-top:20px;
+}
+
+/* floating hearts */
+.float{
+position:fixed;
+bottom:-20px;
+animation:floatUp linear infinite;
+opacity:0.9;
+z-index:-1;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0);}
+100%{transform:translateY(-110vh); opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
-<div id="intro">
-<h1>Tap to open my heart 💗</h1>
-<p style="font-size:0.9rem;">(and let the music play)</p>
-</div>
-
-<div id="content" class="hidden">
-
 <div class="section">
-<h1 style="font-family:'Great Vibes', cursive;">My dearest Shrijaa 💗</h1>
+<h1>My dearest Shrijaa 💗</h1>
 <p>
-Even from miles away, you are the closest thing to my heart.
-Every quiet night carries your name softly within it.
+Even from miles away, you are the closest thing to my heart.  
+In quiet nights and busy days, it is always you.  
+Your name feels like warmth.  
+Your smile feels like home.
 </p>
 </div>
 
 <div class="section">
 <p>
-Loving you from a distance has only made me love you deeper.
-You are my calm, my warmth, my always.
+Loving you from a distance has only made me realize  
+how deeply, gently, and truly I feel for you.  
+Every moment with you — even through a screen —  
+is something I treasure.
 </p>
 </div>
 
@@ -123,26 +147,13 @@ I knew your heart would find mine 💗
 </div>
 </div>
 
-</div>
-
-<audio id="bgMusic" loop preload="auto">
-<source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_946d0f3f3c.mp3?filename=romantic-piano-ambient-124008.mp3" type="audio/mp3">
+<audio id="bgMusic" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c0a7b63a4.mp3?filename=romantic-piano-110083.mp3" type="audio/mp3">
 </audio>
 
 <script>
 
-const intro = document.getElementById("intro");
-const content = document.getElementById("content");
-const music = document.getElementById("bgMusic");
-
-intro.addEventListener("click", function(){
-intro.classList.add("hidden");
-content.classList.remove("hidden");
-document.body.style.overflow="auto";
-music.play();
-});
-
-/* scroll reveal */
+/* smooth scroll reveal */
 const sections = document.querySelectorAll(".section");
 function reveal(){
 sections.forEach(sec=>{
@@ -154,10 +165,29 @@ sec.classList.add("show");
 window.addEventListener("scroll",reveal);
 reveal();
 
-function sayYes(){
-document.getElementById("responseMessage").style.opacity="1";
-}
+/* floating hearts */
+const symbols = ["💗","🌸","✨","💖"];
+setInterval(()=>{
+const el=document.createElement("div");
+el.classList.add("float");
+el.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
+el.style.left=Math.random()*100+"vw";
+el.style.fontSize=(Math.random()*18+14)+"px";
+el.style.animationDuration=(Math.random()*6+6)+"s";
+document.body.appendChild(el);
+setTimeout(()=>{ el.remove(); },10000);
+},400);
 
+/* music unlock */
+document.body.addEventListener("click",()=>{
+document.getElementById("bgMusic").play();
+},{once:true});
+
+/* proposal response inside page */
+function sayYes(){
+let msg = document.getElementById("responseMessage");
+msg.style.opacity = "1";
+}
 </script>
 
 </body>
