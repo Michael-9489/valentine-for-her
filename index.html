@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Shrijaaa ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 
@@ -15,97 +15,99 @@ box-sizing:border-box;
 }
 
 body{
-font-family:'Playfair Display', serif;
-background: linear-gradient(135deg, #ffd6e8, #ffc2d1, #ffb3c6, #ff8fab);
-background-size:400% 400%;
-animation:gradient 12s ease infinite;
-color:#5a2a40;
+background:#ffd6e8;
+font-family:'Cinzel', serif;
 overflow-x:hidden;
+color:#2b0f1b;
 }
 
-@keyframes gradient{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+/* Background glow animation */
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background:radial-gradient(circle at center, #ffc2d1 0%, #ff8fab 40%, #ffd6e8 70%);
+animation:bgmove 15s linear infinite;
+z-index:-1;
 }
+
+@keyframes bgmove{
+0%{transform:translate(-10%,-10%) rotate(0deg);}
+100%{transform:translate(-10%,-10%) rotate(360deg);}
+}
+
+/* Sections */
 
 .section{
 min-height:100vh;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
 padding:40px 20px;
-}
-
-.container{
-max-width:600px;
-width:100%;
-}
-
-h1{
-font-size:1.6rem;
-line-height:1.8;
-font-weight:400;
-}
-
-.name{
-font-family:'Great Vibes', cursive;
-font-size:2.6rem;
-margin:25px 0;
-color:#b03060;
-}
-
-.poem{
-font-size:1.1rem;
-line-height:1.9;
-margin-top:15px;
-}
-
-.hidden{
 opacity:0;
-transform:translateY(40px);
-transition:all 1.5s ease;
+transform:scale(0.9);
+transition:1.5s ease;
 }
 
-.show{
+.section.show{
 opacity:1;
-transform:translateY(0);
+transform:scale(1);
 }
 
-.final{
+/* Typography */
+
+.main-text{
+font-size:1.5rem;
+line-height:2;
+max-width:600px;
+}
+
+.highlight{
 font-family:'Great Vibes', cursive;
-font-size:2.2rem;
+font-size:3rem;
+color:#7a003c;
+margin:25px 0;
+text-shadow:0 0 15px rgba(122,0,60,0.4);
+}
+
+/* Typing effect */
+.typing{
+border-right:2px solid #7a003c;
+white-space:nowrap;
+overflow:hidden;
+}
+
+/* Proposal */
+.proposal{
+font-family:'Great Vibes', cursive;
+font-size:2.5rem;
 margin-top:20px;
-color:#b03060;
+color:#7a003c;
+animation:glow 2s ease-in-out infinite alternate;
 }
 
-.fun{
-margin-top:10px;
-font-size:0.9rem;
-opacity:0.8;
-}
-
-.button-container{
-margin-top:30px;
+@keyframes glow{
+from{text-shadow:0 0 10px #ff4d6d;}
+to{text-shadow:0 0 25px #ff4d6d;}
 }
 
 button{
-padding:12px 28px;
-margin:10px;
+margin:15px;
+padding:12px 30px;
 border:none;
 border-radius:30px;
-cursor:pointer;
-background:#ff4d6d;
+background:#7a003c;
 color:white;
 font-size:1rem;
+cursor:pointer;
 transition:0.3s;
-box-shadow:0 0 15px rgba(255,77,109,0.6);
 }
 
 button:hover{
-transform:scale(1.1);
-box-shadow:0 0 25px rgba(255,77,109,0.9);
+transform:scale(1.15);
+background:#b0005c;
 }
 
 .success{
@@ -114,13 +116,12 @@ font-size:1.2rem;
 display:none;
 }
 
-/* Hearts */
-
-.heart{
+/* Floating sparkles */
+.sparkle{
 position:fixed;
-bottom:-30px;
-font-size:18px;
-animation:float 7s linear infinite;
+bottom:-20px;
+font-size:16px;
+animation:float 6s linear infinite;
 opacity:0.7;
 }
 
@@ -135,104 +136,118 @@ display:none;
 
 </style>
 </head>
-
 <body>
 
-<!-- Romantic Music -->
 <audio id="music" loop>
-<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3e49fdd0ac.mp3?filename=romantic-background-112196.mp3" type="audio/mpeg">
 </audio>
 
-<div class="section">
-<div class="container">
+<div class="section" id="first">
 
-<h1>
-Even if the world stretches wide between us,<br>
-even if distance tries to measure love,<br>
-my heart never forgets where it belongs.
-</h1>
-
-<div class="name">Shrijaaa 🌸</div>
-
-<div class="poem">
-You are the softness in my mornings,<br>
-the calm in my storms,<br>
-the quiet promise my soul keeps making.<br><br>
-
-Loving you is not just a feeling…<br>
-it is my forever.
+<div class="main-text typing" id="typingText">
+Even if distance stretches between us...
 </div>
 
 </div>
+
+<div class="section" id="second">
+
+<div>
+<div class="highlight">Shrijaaa 🌸</div>
+
+<div class="main-text">
+You are not just someone I love...<br>
+You are the calm inside my chaos,<br>
+the warmth inside my silence,<br>
+the forever I never want to lose.
 </div>
 
-<div class="section hidden" id="proposalSection">
-<div class="container">
-
-<div class="poem">
-No matter how far the miles may stretch,<br>
-my love will always find you.
 </div>
 
-<div class="final">
-Will you be my Valentine, Shrijaaa? 💍
 </div>
 
-<div class="fun">(you can’t say no 😌)</div>
+<div class="section" id="third">
 
-<div class="button-container">
+<div>
+<div class="proposal">
+Will you be my Valentine, Shrijaaa?
+</div>
+
+<div style="margin-top:10px;font-size:0.9rem;">
+(you can’t say no 😌)
+</div>
+
 <button onclick="sayYes()">Yes</button>
 <button onclick="sayYes()">Yes</button>
-</div>
 
 <div class="success" id="successMessage">
-I knew it. ❤️ You just made me the happiest person alive.
+I knew it. You were always mine. ❤️
 </div>
 
 </div>
+
 </div>
 
 <script>
 
-/* Scroll reveal + start music */
-let musicStarted = false;
+/* Universal music unlock */
+let music = document.getElementById("music");
+let unlocked = false;
 
-window.addEventListener("scroll", function(){
-const section = document.getElementById("proposalSection");
-const position = section.getBoundingClientRect().top;
-const screenHeight = window.innerHeight;
-
-if(position < screenHeight - 100){
-section.classList.add("show");
-
-if(!musicStarted){
-document.getElementById("music").play();
-musicStarted = true;
-}
+document.body.addEventListener("click", function(){
+if(!unlocked){
+music.play();
+music.pause();
+unlocked = true;
 }
 });
 
+/* Scroll reveal */
+window.addEventListener("scroll", function(){
+document.querySelectorAll(".section").forEach(sec=>{
+const pos = sec.getBoundingClientRect().top;
+if(pos < window.innerHeight - 100){
+sec.classList.add("show");
+if(sec.id === "third" && unlocked){
+music.play();
+}
+}
+});
+});
+
+/* Typing animation */
+let text = "Even if distance stretches between us...";
+let i = 0;
+let speed = 70;
+
+function typeWriter(){
+if(i < text.length){
+document.getElementById("typingText").innerHTML += text.charAt(i);
+i++;
+setTimeout(typeWriter, speed);
+}
+}
+document.getElementById("typingText").innerHTML="";
+typeWriter();
+
+/* Yes button */
 function sayYes(){
 document.getElementById("successMessage").style.display="block";
 }
 
+/* Sparkles */
 setInterval(()=>{
-const heart=document.createElement("div");
-heart.classList.add("heart");
-heart.innerHTML="💗";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(Math.random()*15+15)+"px";
-heart.style.animationDuration=(Math.random()*3+4)+"s";
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-heart.remove();
-},7000);
-
-},600);
+const sparkle=document.createElement("div");
+sparkle.classList.add("sparkle");
+sparkle.innerHTML="✨";
+sparkle.style.left=Math.random()*100+"vw";
+sparkle.style.fontSize=(Math.random()*10+12)+"px";
+sparkle.style.animationDuration=(Math.random()*3+3)+"s";
+document.body.appendChild(sparkle);
+setTimeout(()=>{sparkle.remove();},6000);
+},400);
 
 </script>
 
 </body>
 </html>
-
