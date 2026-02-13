@@ -1,132 +1,159 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>For My Love ❤️</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
+    <title>For You ❤️</title>
 
-body {
-  margin:0;
-  padding:0;
-  background: radial-gradient(circle at top, #1a2a6c, #0f2027);
-  font-family: 'Segoe UI', sans-serif;
-  overflow:hidden;
-  color:white;
-  text-align:center;
-}
+    <!-- Elegant Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
-.container {
-  position:relative;
-  top:30%;
-  transform:translateY(-30%);
-  padding:20px;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-h1 {
-  font-size:36px;
-  animation: glow 2s infinite alternate;
-}
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1c1c3c);
+            background-size: 400% 400%;
+            animation: gradient 12s ease infinite;
+            color: white;
+            padding: 20px;
+        }
 
-@keyframes glow {
-  from { text-shadow: 0 0 10px #ff4b5c; }
-  to { text-shadow: 0 0 25px #ff4b5c, 0 0 40px #ff416c; }
-}
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-p {
-  font-size:18px;
-  margin-top:20px;
-  opacity:0.9;
-}
+        .container {
+            animation: fadeIn 3s ease-in-out;
+        }
 
-button {
-  margin-top:30px;
-  padding:15px 25px;
-  border:none;
-  border-radius:30px;
-  font-size:16px;
-  background:linear-gradient(45deg,#ff416c,#ff4b2b);
-  color:white;
-  cursor:pointer;
-  transition:0.3s;
-}
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-button:hover {
-  transform:scale(1.1);
-}
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
 
-#secret {
-  display:none;
-  margin-top:25px;
-  font-size:20px;
-  animation: fadeIn 2s forwards;
-}
+        .special {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5em;
+            margin: 20px 0;
+            color: #ffccd5;
+        }
 
-@keyframes fadeIn {
-  from { opacity:0; }
-  to { opacity:1; }
-}
+        .typewriter {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid white;
+            width: 0;
+            animation: typing 4s steps(40, end) forwards, blink .7s infinite;
+        }
 
-/* Floating hearts */
+        @keyframes typing {
+            to { width: 100%; }
+        }
 
-.heart {
-  position: absolute;
-  color: #ff4b5c;
-  animation: float 6s linear infinite;
-}
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
 
-@keyframes float {
-  from {
-    transform: translateY(100vh) scale(1);
-    opacity:1;
-  }
-  to {
-    transform: translateY(-10vh) scale(1.5);
-    opacity:0;
-  }
-}
+        button {
+            margin-top: 30px;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(255, 75, 43, 0.6);
+        }
 
-</style>
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 35px rgba(255, 75, 43, 0.9);
+        }
 
-<script>
-function reveal() {
-  document.getElementById("secret").style.display="block";
-}
+        .hidden-message {
+            margin-top: 30px;
+            font-size: 1.3em;
+            display: none;
+        }
 
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.className="heart";
-  heart.innerHTML="❤️";
-  heart.style.left=Math.random()*100+"vw";
-  heart.style.fontSize=(Math.random()*20+10)+"px";
-  heart.style.animationDuration=(Math.random()*3+3)+"s";
-  document.body.appendChild(heart);
-  setTimeout(()=>{heart.remove();},6000);
-}
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 20px;
+            animation: float 6s linear infinite;
+        }
 
-setInterval(createHeart,300);
-</script>
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+    </style>
 </head>
 
 <body>
 
 <div class="container">
-  <h1>Happy Valentine’s Day My Love 💙</h1>
 
-  <p>
-    Even if miles keep us apart,<br>
-    you live inside my heartbeat.<br><br>
-    Tonight… this page belongs to you.
-  </p>
+    <h1>Even if miles keep us apart,</h1>
 
-  <button onclick="reveal()">Click Me ❤️</button>
+    <div class="special">You live inside my heartbeat.</div>
 
-  <div id="secret">
-    You are not just my love…<br>
-    You are my future.<br><br>
-    Distance is temporary.<br>
-    What I feel for you is permanent. 💍
-  </div>
+    <div class="typewriter">You are not just my love... You are my future.</div>
+
+    <button onclick="showMessage()">Open My Heart ❤️</button>
+
+    <div class="hidden-message" id="message">
+        Distance is temporary.<br>
+        What I feel for you is permanent. 💍
+    </div>
+
 </div>
+
+<script>
+
+function showMessage() {
+    document.getElementById("message").style.display = "block";
+}
+
+/* Floating Hearts Generator */
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+
+}, 400);
+
+</script>
 
 </body>
 </html>
