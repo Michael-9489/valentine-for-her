@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Valentine ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+    margin:0;
+    padding:0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+    color: white;
+    text-align: center;
+}
+.container {
+    padding: 50px 20px;
+}
+h1 {
+    font-size: 32px;
+    animation: glow 2s infinite alternate;
+}
+p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    background: #ff4b5c;
+    color: white;
+    font-size: 16px;
+    margin-top: 20px;
+}
+@keyframes glow {
+    from { text-shadow: 0 0 10px #ff4b5c; }
+    to { text-shadow: 0 0 20px #ff416c; }
+}
+.hidden {
+    display: none;
+}
+</style>
+<script>
+function showMessage() {
+    document.getElementById("secret").style.display = "block";
+}
+</script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Happy Valentine’s Day My Love ❤️</h1>
+
+    <p>
+        Even though miles separate us,<br>
+        my heart has never felt closer to you.<br><br>
+        Distance is just a test,<br>
+        and we are passing it together.
+    </p>
+
+    <button onclick="showMessage()">Click for a Surprise 💌</button>
+
+    <div id="secret" class="hidden">
+        <p>
+        You are my peace.  
+        You are my happiness.  
+        You are my forever choice. 💍<br><br>
+        Until I can hold your hand,  
+        I’ll hold your heart. ❤️
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
