@@ -17,6 +17,7 @@ overflow:hidden;
 color:#3a0d1f;
 }
 
+/* Intro screen */
 #intro{
 position:fixed;
 width:100%;
@@ -37,7 +38,9 @@ font-size:3rem;
 color:#7a003c;
 }
 
-.hidden{ display:none; }
+.hidden{
+display:none;
+}
 
 .section{
 min-height:100vh;
@@ -86,7 +89,7 @@ margin-top:20px;
 
 <div id="intro">
 <h1>Tap to open my heart 💗</h1>
-<p style="font-size:0.9rem;">(music will begin softly)</p>
+<p style="font-size:0.9rem;">(and let the music play)</p>
 </div>
 
 <div id="content" class="hidden">
@@ -95,13 +98,13 @@ margin-top:20px;
 <h1 style="font-family:'Great Vibes', cursive;">My dearest Shrijaa 💗</h1>
 <p>
 Even from miles away, you are the closest thing to my heart.
-In every silent moment, it is you.
+Every quiet night carries your name softly within it.
 </p>
 </div>
 
 <div class="section">
 <p>
-Distance only made my feelings clearer.
+Loving you from a distance has only made me love you deeper.
 You are my calm, my warmth, my always.
 </p>
 </div>
@@ -123,10 +126,11 @@ I knew your heart would find mine 💗
 </div>
 
 <audio id="bgMusic" loop preload="auto">
-<source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_946d0f3f3c.mp3?filename=romantic-piano-ambient-124008.mp3" type="audio/mpeg">
+<source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_946d0f3f3c.mp3?filename=romantic-piano-ambient-124008.mp3" type="audio/mp3">
 </audio>
 
 <script>
+
 const intro = document.getElementById("intro");
 const content = document.getElementById("content");
 const music = document.getElementById("bgMusic");
@@ -135,20 +139,10 @@ intro.addEventListener("click", function(){
 intro.classList.add("hidden");
 content.classList.remove("hidden");
 document.body.style.overflow="auto";
-
-let playPromise = music.play();
-
-if (playPromise !== undefined) {
-  playPromise.then(_ => {
-    console.log("Music started");
-  })
-  .catch(error => {
-    console.log("Playback prevented:", error);
-  });
-}
+music.play();
 });
 
-/* Scroll reveal */
+/* scroll reveal */
 const sections = document.querySelectorAll(".section");
 function reveal(){
 sections.forEach(sec=>{
@@ -163,6 +157,7 @@ reveal();
 function sayYes(){
 document.getElementById("responseMessage").style.opacity="1";
 }
+
 </script>
 
 </body>
