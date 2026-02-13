@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>For You ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Shrijaaa ❤️</title>
 
-    <!-- Elegant Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -14,18 +14,18 @@
         }
 
         body {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            overflow: hidden;
             font-family: 'Playfair Display', serif;
             background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1c1c3c);
             background-size: 400% 400%;
-            animation: gradient 12s ease infinite;
+            animation: gradient 15s ease infinite;
             color: white;
-            padding: 20px;
+            padding: 30px 20px;
+            overflow-x: hidden;
         }
 
         @keyframes gradient {
@@ -35,7 +35,9 @@
         }
 
         .container {
-            animation: fadeIn 3s ease-in-out;
+            max-width: 600px;
+            width: 100%;
+            animation: fadeIn 2.5s ease-in-out;
         }
 
         @keyframes fadeIn {
@@ -44,38 +46,29 @@
         }
 
         h1 {
-            font-size: 2.2em;
+            font-size: 1.8rem;
+            line-height: 1.6;
+            font-weight: 400;
             margin-bottom: 20px;
-            font-weight: 500;
         }
 
-        .special {
+        .script {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.5em;
-            margin: 20px 0;
-            color: #ffccd5;
+            font-size: 2.4rem;
+            color: #ffd6e0;
+            margin: 25px 0;
         }
 
-        .typewriter {
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid white;
-            width: 0;
-            animation: typing 4s steps(40, end) forwards, blink .7s infinite;
-        }
-
-        @keyframes typing {
-            to { width: 100%; }
-        }
-
-        @keyframes blink {
-            50% { border-color: transparent; }
+        .poem {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-top: 15px;
         }
 
         button {
-            margin-top: 30px;
-            padding: 15px 40px;
-            font-size: 1.1em;
+            margin-top: 35px;
+            padding: 14px 35px;
+            font-size: 1rem;
             border: none;
             border-radius: 40px;
             cursor: pointer;
@@ -86,27 +79,30 @@
         }
 
         button:hover {
-            transform: scale(1.1);
+            transform: scale(1.08);
             box-shadow: 0 0 35px rgba(255, 75, 43, 0.9);
         }
 
         .hidden-message {
-            margin-top: 30px;
-            font-size: 1.3em;
             display: none;
+            margin-top: 30px;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            animation: fadeIn 2s ease forwards;
         }
 
         /* Floating Hearts */
         .heart {
-            position: absolute;
-            bottom: -50px;
-            font-size: 20px;
-            animation: float 6s linear infinite;
+            position: fixed;
+            bottom: -30px;
+            font-size: 18px;
+            animation: float 7s linear infinite;
+            opacity: 0.8;
         }
 
         @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+            0% { transform: translateY(0) scale(1); opacity: 0.9; }
+            100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
         }
 
     </style>
@@ -116,17 +112,31 @@
 
 <div class="container">
 
-    <h1>Even if miles keep us apart,</h1>
+    <h1>
+        Even if miles stretch between us,<br>
+        even if oceans try to test us,<br>
+        my heart still finds its way to you.
+    </h1>
 
-    <div class="special">You live inside my heartbeat.</div>
+    <div class="script">Shrijaaa ✨</div>
 
-    <div class="typewriter">You are not just my love... You are my future.</div>
+    <div class="poem">
+        You are the calm in my chaos,<br>
+        the light in my longest nights,<br>
+        the quiet promise my soul keeps making.<br><br>
+
+        Loving you isn’t just a feeling…<br>
+        it’s my favorite forever.
+    </div>
 
     <button onclick="showMessage()">Open My Heart ❤️</button>
 
     <div class="hidden-message" id="message">
-        Distance is temporary.<br>
-        What I feel for you is permanent. 💍
+        No distance could ever change what you mean to me.<br><br>
+        So today… and every day after,<br><br>
+        <span style="font-family: 'Great Vibes', cursive; font-size: 2rem; color:#ffd6e0;">
+            Will you be my Valentine, Shrijaaa? 💍
+        </span>
     </div>
 
 </div>
@@ -137,21 +147,20 @@ function showMessage() {
     document.getElementById("message").style.display = "block";
 }
 
-/* Floating Hearts Generator */
 setInterval(() => {
     const heart = document.createElement("div");
     heart.classList.add("heart");
     heart.innerHTML = "💖";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    heart.style.fontSize = (Math.random() * 15 + 15) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
     document.body.appendChild(heart);
 
     setTimeout(() => {
         heart.remove();
-    }, 6000);
+    }, 7000);
 
-}, 400);
+}, 500);
 
 </script>
 
