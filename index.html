@@ -15,17 +15,11 @@
 }
 
 body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
     font-family:'Playfair Display', serif;
     background: linear-gradient(135deg, #ffd6e8, #ffc2d1, #ffb3c6, #ff8fab);
-    background-size: 400% 400%;
-    animation: gradient 12s ease infinite;
+    background-size:400% 400%;
+    animation:gradient 12s ease infinite;
     color:#5a2a40;
-    padding:30px 20px;
     overflow-x:hidden;
 }
 
@@ -35,28 +29,30 @@ body{
     100%{background-position:0% 50%;}
 }
 
+.section{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px;
+}
+
 .container{
     max-width:600px;
     width:100%;
-    animation:fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
 }
 
 h1{
     font-size:1.6rem;
-    line-height:1.7;
+    line-height:1.8;
     font-weight:400;
-    margin-bottom:20px;
 }
 
 .name{
     font-family:'Great Vibes', cursive;
-    font-size:2.5rem;
-    margin:20px 0;
+    font-size:2.6rem;
+    margin:25px 0;
     color:#b03060;
 }
 
@@ -66,29 +62,17 @@ h1{
     margin-top:15px;
 }
 
-button{
-    margin-top:35px;
-    padding:14px 35px;
-    font-size:1rem;
-    border:none;
-    border-radius:40px;
-    cursor:pointer;
-    background:#ff4d6d;
-    color:white;
-    transition:0.3s;
-    box-shadow:0 0 15px rgba(255,77,109,0.6);
+/* Scroll reveal */
+
+.hidden{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 1.5s ease;
 }
 
-button:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 30px rgba(255,77,109,0.9);
-}
-
-.hidden-message{
-    display:none;
-    margin-top:30px;
-    font-size:1.2rem;
-    line-height:1.8;
+.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
 .final{
@@ -98,7 +82,37 @@ button:hover{
     color:#b03060;
 }
 
-/* Floating Hearts */
+.fun{
+    margin-top:10px;
+    font-size:0.9rem;
+    opacity:0.8;
+}
+
+/* Buttons */
+
+.button-container{
+    margin-top:30px;
+}
+
+button{
+    padding:12px 28px;
+    margin:10px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    background:#ff4d6d;
+    color:white;
+    font-size:1rem;
+    transition:0.3s;
+    box-shadow:0 0 15px rgba(255,77,109,0.6);
+}
+
+button:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 25px rgba(255,77,109,0.9);
+}
+
+/* Floating hearts */
 
 .heart{
     position:fixed;
@@ -109,11 +123,13 @@ button:hover{
 }
 
 @keyframes float{
-    0%{transform:translateY(0) scale(1);}
-    100%{transform:translateY(-110vh) scale(1.4); opacity:0;}
+    0%{transform:translateY(0);}
+    100%{transform:translateY(-110vh); opacity:0;}
 }
 
-audio{
+.success{
+    margin-top:20px;
+    font-size:1.2rem;
     display:none;
 }
 
@@ -122,51 +138,76 @@ audio{
 
 <body>
 
-<!-- Romantic Background Music -->
-<audio autoplay loop id="music">
-    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
-</audio>
-
+<div class="section">
 <div class="container">
 
 <h1>
-Even if the world feels wide between us,<br>
+Even if the world stretches wide between us,<br>
 even if distance tries to measure love,<br>
-my heart never forgets its home —
-and its home is you.
+my heart never forgets where it belongs.
 </h1>
 
 <div class="name">Shrijaaa 🌸</div>
 
 <div class="poem">
 You are the softness in my mornings,<br>
-the warmth in my quiet nights,<br>
-the dream I never want to wake from.<br><br>
+the calm in my storms,<br>
+the quiet promise my soul keeps making.<br><br>
 
-Loving you is not just a chapter…<br>
-it is the whole story I wish to write.
+Loving you is not just a feeling…<br>
+it is my forever.
 </div>
 
-<button onclick="showMessage()">Open My Heart ❤️</button>
+</div>
+</div>
 
-<div class="hidden-message" id="message">
+
+<div class="section hidden" id="proposalSection">
+<div class="container">
+
+<div class="poem">
 No matter how far the miles may stretch,<br>
-my love will always reach you.<br><br>
+my love will always find you.
+</div>
 
 <div class="final">
 Will you be my Valentine, Shrijaaa? 💍
 </div>
+
+<div class="fun">(you can’t say no 😌)</div>
+
+<div class="button-container">
+    <button onclick="sayYes()">Yes</button>
+    <button onclick="sayYes()">Yes</button>
+</div>
+
+<div class="success" id="successMessage">
+    I knew it. ❤️ You just made me the happiest person alive.
 </div>
 
 </div>
+</div>
+
 
 <script>
 
-function showMessage(){
-    document.getElementById("message").style.display="block";
-    document.getElementById("music").play();
+/* Scroll reveal */
+window.addEventListener("scroll", function(){
+    const section = document.getElementById("proposalSection");
+    const position = section.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+
+    if(position < screenHeight - 100){
+        section.classList.add("show");
+    }
+});
+
+/* Yes buttons */
+function sayYes(){
+    document.getElementById("successMessage").style.display="block";
 }
 
+/* Floating hearts */
 setInterval(()=>{
     const heart=document.createElement("div");
     heart.classList.add("heart");
@@ -180,7 +221,7 @@ setInterval(()=>{
         heart.remove();
     },7000);
 
-},500);
+},600);
 
 </script>
 
