@@ -1,251 +1,185 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Shrijaaa ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<title>For Shrijaa 💗</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-
-*{
+body{
 margin:0;
 padding:0;
-box-sizing:border-box;
-}
-
-body{
 background:#ffd6e8;
 font-family:'Cinzel', serif;
 overflow-x:hidden;
-color:#2b0f1b;
+color:#3a0d1f;
 }
 
-/* Background glow animation */
+/* Soft glowing background */
 body::before{
 content:"";
 position:fixed;
 width:200%;
 height:200%;
-background:radial-gradient(circle at center, #ffc2d1 0%, #ff8fab 40%, #ffd6e8 70%);
-animation:bgmove 15s linear infinite;
-z-index:-1;
+background:radial-gradient(circle at center,#ffc2d1 0%,#ff8fab 40%,#ffd6e8 70%);
+animation:bgmove 25s linear infinite;
+z-index:-2;
+opacity:0.6;
 }
 
 @keyframes bgmove{
-0%{transform:translate(-10%,-10%) rotate(0deg);}
-100%{transform:translate(-10%,-10%) rotate(360deg);}
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
 }
-
-/* Sections */
 
 .section{
 min-height:100vh;
 display:flex;
+flex-direction:column;
 align-items:center;
 justify-content:center;
 text-align:center;
 padding:40px 20px;
 opacity:0;
-transform:scale(0.9);
+transform:translateY(40px);
 transition:1.5s ease;
 }
 
 .section.show{
 opacity:1;
-transform:scale(1);
+transform:translateY(0);
 }
 
-/* Typography */
+h1{
+font-family:'Great Vibes', cursive;
+font-size:3.2rem;
+margin-bottom:20px;
+color:#7a003c;
+text-shadow:0 0 15px rgba(122,0,60,0.4);
+}
 
-.main-text{
-font-size:1.5rem;
-line-height:2;
+p{
+font-size:1.2rem;
 max-width:600px;
+line-height:1.7;
 }
 
 .highlight{
 font-family:'Great Vibes', cursive;
 font-size:3rem;
-color:#7a003c;
-margin:25px 0;
-text-shadow:0 0 15px rgba(122,0,60,0.4);
-}
-
-/* Typing effect */
-.typing{
-border-right:2px solid #7a003c;
-white-space:nowrap;
-overflow:hidden;
-}
-
-/* Proposal */
-.proposal{
-font-family:'Great Vibes', cursive;
-font-size:2.5rem;
-margin-top:20px;
-color:#7a003c;
-animation:glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow{
-from{text-shadow:0 0 10px #ff4d6d;}
-to{text-shadow:0 0 25px #ff4d6d;}
+margin:30px 0;
+color:#a0004d;
+text-shadow:0 0 20px rgba(160,0,77,0.6);
 }
 
 button{
-margin:15px;
-padding:12px 30px;
+padding:14px 28px;
+margin:10px;
 border:none;
 border-radius:30px;
-background:#7a003c;
-color:white;
 font-size:1rem;
 cursor:pointer;
+background:#a0004d;
+color:white;
 transition:0.3s;
 }
 
 button:hover{
-transform:scale(1.15);
-background:#b0005c;
+transform:scale(1.1);
+background:#7a003c;
 }
 
-.success{
-margin-top:20px;
-font-size:1.2rem;
-display:none;
-}
-
-/* Floating sparkles */
-.sparkle{
+/* Floating elements */
+.float{
 position:fixed;
 bottom:-20px;
-font-size:16px;
-animation:float 6s linear infinite;
-opacity:0.7;
+animation:floatUp linear infinite;
+opacity:0.9;
+z-index:-1;
 }
 
-@keyframes float{
+@keyframes floatUp{
 0%{transform:translateY(0);}
 100%{transform:translateY(-110vh); opacity:0;}
 }
-
-audio{
-display:none;
-}
-
 </style>
 </head>
+
 <body>
 
-<audio id="music" loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3e49fdd0ac.mp3?filename=romantic-background-112196.mp3" type="audio/mpeg">
+<div class="section">
+<h1>My Dearest Shrijaa 💗</h1>
+<p>
+From miles away, across cities and silent nights,
+my heart still finds its way to you.
+In every quiet moment, in every breath,
+it whispers your name.
+</p>
+</div>
+
+<div class="section">
+<p>
+You are not just someone I love…
+you are the warmth in my loneliness,
+the calm in my chaos,
+the smile behind my screen.
+</p>
+</div>
+
+<div class="section">
+<div class="highlight">Shrijaa… will you be my Valentine?</div>
+<p style="font-size:0.9rem;">(you can't say no 😌)</p>
+
+<button onclick="alert('I knew it 😌💗')">Yes</button>
+<button onclick="alert('Nice try 😏 It’s still yes.')">Yes</button>
+</div>
+
+<audio id="bgMusic" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
 </audio>
-
-<div class="section" id="first">
-
-<div class="main-text typing" id="typingText">
-Even if distance stretches between us...
-</div>
-
-</div>
-
-<div class="section" id="second">
-
-<div>
-<div class="highlight">Shrijaaa 🌸</div>
-
-<div class="main-text">
-You are not just someone I love...<br>
-You are the calm inside my chaos,<br>
-the warmth inside my silence,<br>
-the forever I never want to lose.
-</div>
-
-</div>
-
-</div>
-
-<div class="section" id="third">
-
-<div>
-<div class="proposal">
-Will you be my Valentine, Shrijaaa?
-</div>
-
-<div style="margin-top:10px;font-size:0.9rem;">
-(you can’t say no 😌)
-</div>
-
-<button onclick="sayYes()">Yes</button>
-<button onclick="sayYes()">Yes</button>
-
-<div class="success" id="successMessage">
-I knew it. You were always mine. ❤️
-</div>
-
-</div>
-
-</div>
 
 <script>
 
-/* Universal music unlock */
-let music = document.getElementById("music");
-let unlocked = false;
-
-document.body.addEventListener("click", function(){
-if(!unlocked){
-music.play();
-music.pause();
-unlocked = true;
-}
-});
-
 /* Scroll reveal */
-window.addEventListener("scroll", function(){
-document.querySelectorAll(".section").forEach(sec=>{
-const pos = sec.getBoundingClientRect().top;
-if(pos < window.innerHeight - 100){
+const sections = document.querySelectorAll(".section");
+
+function reveal(){
+sections.forEach(sec=>{
+const top = sec.getBoundingClientRect().top;
+if(top < window.innerHeight - 100){
 sec.classList.add("show");
-if(sec.id === "third" && unlocked){
-music.play();
-}
 }
 });
-});
-
-/* Typing animation */
-let text = "Even if distance stretches between us...";
-let i = 0;
-let speed = 70;
-
-function typeWriter(){
-if(i < text.length){
-document.getElementById("typingText").innerHTML += text.charAt(i);
-i++;
-setTimeout(typeWriter, speed);
 }
-}
-document.getElementById("typingText").innerHTML="";
-typeWriter();
+window.addEventListener("scroll",reveal);
+reveal();
 
-/* Yes button */
-function sayYes(){
-document.getElementById("successMessage").style.display="block";
-}
+/* Floating hearts & flowers */
+const symbols = ["💗","🌸","✨","💖","🌷"];
 
-/* Sparkles */
 setInterval(()=>{
-const sparkle=document.createElement("div");
-sparkle.classList.add("sparkle");
-sparkle.innerHTML="✨";
-sparkle.style.left=Math.random()*100+"vw";
-sparkle.style.fontSize=(Math.random()*10+12)+"px";
-sparkle.style.animationDuration=(Math.random()*3+3)+"s";
-document.body.appendChild(sparkle);
-setTimeout(()=>{sparkle.remove();},6000);
-},400);
+const el=document.createElement("div");
+el.classList.add("float");
+el.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
+el.style.left=Math.random()*100+"vw";
+el.style.fontSize=(Math.random()*18+14)+"px";
+el.style.animationDuration=(Math.random()*6+6)+"s";
+document.body.appendChild(el);
+
+setTimeout(()=>{
+el.remove();
+},10000);
+
+},300);
+
+/* Music unlock (mobile friendly) */
+document.body.addEventListener("click",()=>{
+const music = document.getElementById("bgMusic");
+music.play();
+},{once:true});
 
 </script>
 
