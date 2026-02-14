@@ -3,223 +3,255 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RORO Tech Core</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
-
+<title>RORO ULTRA CORE</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Rajdhani', sans-serif;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
-background:#0a0f1c;
-color:#00f0ff;
-overflow-x:hidden;
+background:#03060f;
+font-family:'Orbitron',sans-serif;
+color:#00f2ff;
+overflow:hidden;
 }
 
-/* Animated Tech Grid */
-body::before{
-content:"";
+/* GLITCH INTRO */
+#intro{
 position:fixed;
 width:100%;
-height:100%;
-background:
-linear-gradient(rgba(0,240,255,0.08) 1px, transparent 1px),
-linear-gradient(90deg, rgba(0,240,255,0.08) 1px, transparent 1px);
-background-size:50px 50px;
-animation:gridMove 10s linear infinite;
-z-index:-2;
-}
-
-@keyframes gridMove{
-0%{background-position:0 0;}
-100%{background-position:50px 50px;}
-}
-
-/* Scanning line */
-.scan{
-position:fixed;
-width:100%;
-height:2px;
-background:#00f0ff;
-box-shadow:0 0 15px #00f0ff;
-animation:scanMove 4s linear infinite;
-z-index:-1;
-}
-
-@keyframes scanMove{
-0%{top:0;}
-100%{top:100%;}
-}
-
-/* Header */
-header{
-text-align:center;
-padding:40px 20px;
-font-size:2.5rem;
-letter-spacing:4px;
-font-weight:700;
-border-bottom:1px solid #00f0ff;
-}
-
-/* Game Container */
-.games{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-padding:40px 20px;
-gap:30px;
-}
-
-/* Game Card */
-.card{
-width:250px;
-padding:25px;
-border:1px solid #00f0ff;
-cursor:pointer;
-transition:0.4s;
-background:rgba(0,240,255,0.05);
-}
-
-.card:hover{
-transform:scale(1.08);
-box-shadow:0 0 25px #00f0ff;
-}
-
-/* Info Panel */
-#infoPanel{
-position:fixed;
-right:-100%;
-top:0;
-width:100%;
-max-width:400px;
 height:100vh;
-background:#11182a;
-border-left:2px solid #00f0ff;
-padding:30px;
-transition:0.5s;
-overflow-y:auto;
+background:black;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+z-index:100;
+animation:fadeOut 2s 3s forwards;
 }
 
-#infoPanel.active{
-right:0;
+.glitch{
+font-size:2rem;
+position:relative;
+animation:glitch 1s infinite;
 }
 
-.closeBtn{
-margin-top:20px;
-padding:10px 20px;
-background:#00f0ff;
-border:none;
-cursor:pointer;
-color:black;
+@keyframes glitch{
+0%{text-shadow:2px 0 red,-2px 0 cyan;}
+20%{text-shadow:-2px 0 red,2px 0 cyan;}
+40%{text-shadow:2px 2px red,-2px -2px cyan;}
+60%{text-shadow:-2px -2px red,2px 2px cyan;}
+80%{text-shadow:2px -2px red,-2px 2px cyan;}
+100%{text-shadow:-2px 2px red,2px -2px cyan;}
 }
 
-/* Reaction Game */
-#reactionGame{
-margin-top:20px;
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden;}
+}
+
+/* LAYOUT */
+#app{
+display:flex;
+height:100vh;
+opacity:0;
+animation:fadeIn 1s 3s forwards;
+}
+
+@keyframes fadeIn{to{opacity:1;}}
+
+.sidebar{
+width:220px;
+border-right:1px solid #00f2ff;
 padding:20px;
-border:1px solid #00f0ff;
-text-align:center;
+background:rgba(0,255,255,0.03);
+backdrop-filter:blur(10px);
 }
 
-#target{
-margin-top:15px;
-width:50px;
-height:50px;
-background:#00f0ff;
-display:none;
+.sidebar div{
+margin:25px 0;
 cursor:pointer;
+transition:0.3s;
+}
+
+.sidebar div:hover{
+transform:translateX(10px);
+color:white;
+}
+
+.content{
+flex:1;
+padding:40px;
+position:relative;
+overflow:hidden;
+}
+
+.panel{
+position:absolute;
+width:100%;
+opacity:0;
+transform:translateX(100px);
+transition:0.5s ease;
+}
+
+.panel.active{
+opacity:1;
+transform:translateX(0);
+}
+
+/* GAME AREAS */
+#dodgeArea, #clickArea{
+position:relative;
+width:100%;
+height:350px;
+border:1px solid #00f2ff;
+margin-top:20px;
+overflow:hidden;
+}
+
+.player{
+width:30px;
+height:30px;
+background:#00f2ff;
+position:absolute;
+bottom:10px;
+left:50%;
+transform:translateX(-50%);
+}
+
+.enemy{
+width:30px;
+height:30px;
+background:red;
+position:absolute;
+top:0;
+}
+
+.target{
+width:40px;
+height:40px;
+background:lime;
+position:absolute;
+border-radius:50%;
 }
 
 </style>
 </head>
-
 <body>
 
-<div class="scan"></div>
-
-<header>RORO TECH CORE</header>
-
-<div class="games">
-<div class="card" onclick="openGame('arena')">
-<h2>Battle Arena</h2>
-<p>High speed PvP combat system</p>
+<div id="intro">
+<div class="glitch">RORO SYSTEM INITIALIZING</div>
 </div>
 
-<div class="card" onclick="openGame('racing')">
-<h2>Cyber Racing</h2>
-<p>Neon velocity racing engine</p>
+<div id="app">
+<div class="sidebar">
+<div onclick="switchPanel('home')">HOME</div>
+<div onclick="switchPanel('dodge')">DODGE PROTOCOL</div>
+<div onclick="switchPanel('click')">TARGET STRIKE</div>
 </div>
 
-<div class="card" onclick="openGame('survival')">
-<h2>Zombie Survival</h2>
-<p>AI based survival protocol</p>
+<div class="content">
+
+<div id="home" class="panel active">
+<h2>WELCOME COMMANDER</h2>
+<p>System Online.</p>
+</div>
+
+<div id="dodge" class="panel">
+<h2>DODGE PROTOCOL</h2>
+<p>Score: <span id="score1">0</span></p>
+<div id="dodgeArea">
+<div class="player" id="player"></div>
 </div>
 </div>
 
-<div id="infoPanel">
-<h2 id="gameTitle"></h2>
-<p id="gameDescription"></p>
-
-<div id="reactionGame">
-<h3>Reaction Test Mini Game</h3>
-<p>Click the square as fast as you can</p>
-<div id="target" onclick="hitTarget()"></div>
-<p id="result"></p>
+<div id="click" class="panel">
+<h2>TARGET STRIKE</h2>
+<p>Score: <span id="score2">0</span></p>
+<div id="clickArea"></div>
 </div>
 
-<button class="closeBtn" onclick="closePanel()">Close</button>
+</div>
 </div>
 
 <script>
-const gameData = {
-arena: {
-title: "Battle Arena",
-desc: "Advanced combat simulation with robotic physics and real-time reaction system."
-},
-racing: {
-title: "Cyber Racing",
-desc: "Hyper-speed futuristic racing environment with neon track rendering."
-},
-survival: {
-title: "Zombie Survival",
-desc: "AI infected world. Survive waves using tactical robotics defense."
-}
-};
 
-function openGame(type){
-document.getElementById("gameTitle").innerText = gameData[type].title;
-document.getElementById("gameDescription").innerText = gameData[type].desc;
-document.getElementById("infoPanel").classList.add("active");
-startReaction();
+/* SOUND ENGINE */
+const ctxAudio=new (window.AudioContext||window.webkitAudioContext)();
+
+function beep(freq,dur){
+let osc=ctxAudio.createOscillator();
+let gain=ctxAudio.createGain();
+osc.connect(gain);
+gain.connect(ctxAudio.destination);
+osc.frequency.value=freq;
+osc.start();
+gain.gain.exponentialRampToValueAtTime(0.0001,ctxAudio.currentTime+dur/1000);
+osc.stop(ctxAudio.currentTime+dur/1000);
 }
 
-function closePanel(){
-document.getElementById("infoPanel").classList.remove("active");
+/* PANEL SWITCH */
+function switchPanel(id){
+document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+beep(400,100);
 }
 
-let startTime;
+/* DODGE GAME */
+let score1=0;
+const player=document.getElementById("player");
+const dodgeArea=document.getElementById("dodgeArea");
 
-function startReaction(){
-const target = document.getElementById("target");
-target.style.display="none";
-document.getElementById("result").innerText="";
-setTimeout(()=>{
-target.style.display="block";
-startTime = new Date().getTime();
-}, Math.random()*2000+1000);
+document.addEventListener("mousemove",e=>{
+let rect=dodgeArea.getBoundingClientRect();
+if(e.clientX>rect.left && e.clientX<rect.right){
+player.style.left=(e.clientX-rect.left-15)+"px";
+}
+});
+
+setInterval(()=>{
+let enemy=document.createElement("div");
+enemy.classList.add("enemy");
+enemy.style.left=Math.random()*(dodgeArea.offsetWidth-30)+"px";
+dodgeArea.appendChild(enemy);
+
+let fall=setInterval(()=>{
+enemy.style.top=(enemy.offsetTop+5)+"px";
+if(enemy.offsetTop>320){
+score1++;
+document.getElementById("score1").innerText=score1;
+enemy.remove();
+clearInterval(fall);
 }
 
-function hitTarget(){
-let reactionTime = new Date().getTime() - startTime;
-document.getElementById("result").innerText = "Reaction Time: " + reactionTime + " ms";
-document.getElementById("target").style.display="none";
+let p=player.getBoundingClientRect();
+let e=enemy.getBoundingClientRect();
+if(p.left<e.right && p.right>e.left && p.top<e.bottom && p.bottom>e.top){
+alert("Game Over");
+location.reload();
 }
+},20);
+},1000);
+
+/* CLICK GAME */
+let score2=0;
+const clickArea=document.getElementById("clickArea");
+
+function spawnTarget(){
+let t=document.createElement("div");
+t.classList.add("target");
+t.style.left=Math.random()*(clickArea.offsetWidth-40)+"px";
+t.style.top=Math.random()*(clickArea.offsetHeight-40)+"px";
+clickArea.appendChild(t);
+
+t.onclick=()=>{
+score2++;
+document.getElementById("score2").innerText=score2;
+beep(800,80);
+t.remove();
+spawnTarget();
+}
+}
+
+spawnTarget();
+
 </script>
-
 </body>
 </html>
