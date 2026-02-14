@@ -3,163 +3,221 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RORO | Ultra Gaming</title>
+<title>RORO Tech Core</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:'Rajdhani', sans-serif;
 }
 
 body{
-font-family:'Orbitron', sans-serif;
-background:#050510;
-color:white;
+background:#0a0f1c;
+color:#00f0ff;
 overflow-x:hidden;
 }
 
-/* Animated background */
+/* Animated Tech Grid */
 body::before{
 content:"";
-position:fixed;
-width:200%;
-height:200%;
-background:radial-gradient(circle at center,#0f0c29,#302b63,#24243e);
-animation:rotateBg 20s linear infinite;
-z-index:-2;
-}
-
-@keyframes rotateBg{
-0%{transform:rotate(0deg);}
-100%{transform:rotate(360deg);}
-}
-
-/* Neon grid */
-.grid{
 position:fixed;
 width:100%;
 height:100%;
 background:
-linear-gradient(rgba(0,255,255,0.1) 1px, transparent 1px),
-linear-gradient(90deg, rgba(0,255,255,0.1) 1px, transparent 1px);
-background-size:40px 40px;
-z-index:-1;
-animation:gridMove 8s linear infinite;
+linear-gradient(rgba(0,240,255,0.08) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0,240,255,0.08) 1px, transparent 1px);
+background-size:50px 50px;
+animation:gridMove 10s linear infinite;
+z-index:-2;
 }
 
 @keyframes gridMove{
 0%{background-position:0 0;}
-100%{background-position:40px 40px;}
+100%{background-position:50px 50px;}
 }
 
-/* Hero Section */
-.hero{
-height:100vh;
+/* Scanning line */
+.scan{
+position:fixed;
+width:100%;
+height:2px;
+background:#00f0ff;
+box-shadow:0 0 15px #00f0ff;
+animation:scanMove 4s linear infinite;
+z-index:-1;
+}
+
+@keyframes scanMove{
+0%{top:0;}
+100%{top:100%;}
+}
+
+/* Header */
+header{
+text-align:center;
+padding:40px 20px;
+font-size:2.5rem;
+letter-spacing:4px;
+font-weight:700;
+border-bottom:1px solid #00f0ff;
+}
+
+/* Game Container */
+.games{
 display:flex;
-flex-direction:column;
-align-items:center;
+flex-wrap:wrap;
 justify-content:center;
-text-align:center;
+padding:40px 20px;
+gap:30px;
 }
 
-.hero h1{
-font-size:4rem;
-font-weight:900;
-color:#00ffff;
-text-shadow:0 0 20px #00ffff, 0 0 40px #00ffff;
-animation:glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow{
-from{ text-shadow:0 0 10px #00ffff; }
-to{ text-shadow:0 0 40px #00ffff, 0 0 80px #00ffff; }
-}
-
-.hero p{
-margin-top:20px;
-font-size:1.2rem;
-color:#aaa;
-}
-
-/* Buttons */
-.btn{
-margin-top:30px;
-padding:15px 40px;
-border:2px solid #00ffff;
-color:#00ffff;
-background:transparent;
-cursor:pointer;
-font-size:1rem;
-transition:0.3s;
-}
-
-.btn:hover{
-background:#00ffff;
-color:black;
-box-shadow:0 0 20px #00ffff;
-transform:scale(1.1);
-}
-
-/* Section */
-.section{
-padding:100px 20px;
-text-align:center;
-}
-
+/* Game Card */
 .card{
-margin:30px auto;
-padding:30px;
-max-width:300px;
-background:rgba(255,255,255,0.05);
-border:1px solid #00ffff;
-box-shadow:0 0 20px rgba(0,255,255,0.4);
+width:250px;
+padding:25px;
+border:1px solid #00f0ff;
+cursor:pointer;
 transition:0.4s;
+background:rgba(0,240,255,0.05);
 }
 
 .card:hover{
-transform:translateY(-10px) scale(1.05);
-box-shadow:0 0 40px rgba(0,255,255,0.8);
+transform:scale(1.08);
+box-shadow:0 0 25px #00f0ff;
 }
+
+/* Info Panel */
+#infoPanel{
+position:fixed;
+right:-100%;
+top:0;
+width:100%;
+max-width:400px;
+height:100vh;
+background:#11182a;
+border-left:2px solid #00f0ff;
+padding:30px;
+transition:0.5s;
+overflow-y:auto;
+}
+
+#infoPanel.active{
+right:0;
+}
+
+.closeBtn{
+margin-top:20px;
+padding:10px 20px;
+background:#00f0ff;
+border:none;
+cursor:pointer;
+color:black;
+}
+
+/* Reaction Game */
+#reactionGame{
+margin-top:20px;
+padding:20px;
+border:1px solid #00f0ff;
+text-align:center;
+}
+
+#target{
+margin-top:15px;
+width:50px;
+height:50px;
+background:#00f0ff;
+display:none;
+cursor:pointer;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="grid"></div>
+<div class="scan"></div>
 
-<div class="hero">
-<h1>RORO</h1>
-<p>Enter the next level of gaming reality</p>
-<button class="btn" onclick="enterGame()">ENTER GAME</button>
+<header>RORO TECH CORE</header>
+
+<div class="games">
+<div class="card" onclick="openGame('arena')">
+<h2>Battle Arena</h2>
+<p>High speed PvP combat system</p>
 </div>
 
-<div class="section">
-<h2 style="color:#00ffff;">Game Modes</h2>
-
-<div class="card">
-<h3>Battle Arena</h3>
-<p>Fight. Dominate. Survive.</p>
+<div class="card" onclick="openGame('racing')">
+<h2>Cyber Racing</h2>
+<p>Neon velocity racing engine</p>
 </div>
 
-<div class="card">
-<h3>Cyber Racing</h3>
-<p>Speed beyond limits.</p>
+<div class="card" onclick="openGame('survival')">
+<h2>Zombie Survival</h2>
+<p>AI based survival protocol</p>
+</div>
 </div>
 
-<div class="card">
-<h3>Zombie Survival</h3>
-<p>Only the strongest last.</p>
+<div id="infoPanel">
+<h2 id="gameTitle"></h2>
+<p id="gameDescription"></p>
+
+<div id="reactionGame">
+<h3>Reaction Test Mini Game</h3>
+<p>Click the square as fast as you can</p>
+<div id="target" onclick="hitTarget()"></div>
+<p id="result"></p>
 </div>
 
+<button class="closeBtn" onclick="closePanel()">Close</button>
 </div>
 
 <script>
-function enterGame(){
-document.body.style.background = "black";
-alert("Welcome to RORO Gaming Mode 🎮🔥");
+const gameData = {
+arena: {
+title: "Battle Arena",
+desc: "Advanced combat simulation with robotic physics and real-time reaction system."
+},
+racing: {
+title: "Cyber Racing",
+desc: "Hyper-speed futuristic racing environment with neon track rendering."
+},
+survival: {
+title: "Zombie Survival",
+desc: "AI infected world. Survive waves using tactical robotics defense."
+}
+};
+
+function openGame(type){
+document.getElementById("gameTitle").innerText = gameData[type].title;
+document.getElementById("gameDescription").innerText = gameData[type].desc;
+document.getElementById("infoPanel").classList.add("active");
+startReaction();
+}
+
+function closePanel(){
+document.getElementById("infoPanel").classList.remove("active");
+}
+
+let startTime;
+
+function startReaction(){
+const target = document.getElementById("target");
+target.style.display="none";
+document.getElementById("result").innerText="";
+setTimeout(()=>{
+target.style.display="block";
+startTime = new Date().getTime();
+}, Math.random()*2000+1000);
+}
+
+function hitTarget(){
+let reactionTime = new Date().getTime() - startTime;
+document.getElementById("result").innerText = "Reaction Time: " + reactionTime + " ms";
+document.getElementById("target").style.display="none";
 }
 </script>
 
