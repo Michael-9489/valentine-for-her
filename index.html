@@ -3,190 +3,163 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Shrijaa 💗</title>
+<title>RORO | Ultra Gaming</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
-body{
+*{
 margin:0;
 padding:0;
-background:#ffd6e8;
-font-family:'Playfair Display', serif;
-overflow-x:hidden;
-color:#3a0d1f;
+box-sizing:border-box;
 }
 
-/* soft romantic glow */
+body{
+font-family:'Orbitron', sans-serif;
+background:#050510;
+color:white;
+overflow-x:hidden;
+}
+
+/* Animated background */
 body::before{
 content:"";
 position:fixed;
 width:200%;
 height:200%;
-background:radial-gradient(circle at center,#ffc2d1 0%,#ff8fab 40%,#ffd6e8 70%);
-animation:bgmove 30s linear infinite;
+background:radial-gradient(circle at center,#0f0c29,#302b63,#24243e);
+animation:rotateBg 20s linear infinite;
 z-index:-2;
-opacity:0.5;
 }
 
-@keyframes bgmove{
+@keyframes rotateBg{
 0%{transform:rotate(0deg);}
 100%{transform:rotate(360deg);}
 }
 
-.section{
-min-height:100vh;
+/* Neon grid */
+.grid{
+position:fixed;
+width:100%;
+height:100%;
+background:
+linear-gradient(rgba(0,255,255,0.1) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0,255,255,0.1) 1px, transparent 1px);
+background-size:40px 40px;
+z-index:-1;
+animation:gridMove 8s linear infinite;
+}
+
+@keyframes gridMove{
+0%{background-position:0 0;}
+100%{background-position:40px 40px;}
+}
+
+/* Hero Section */
+.hero{
+height:100vh;
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
 text-align:center;
-padding:40px 25px;
-opacity:0;
-transform:translateY(40px);
-transition:1.5s ease;
 }
 
-.section.show{
-opacity:1;
-transform:translateY(0);
+.hero h1{
+font-size:4rem;
+font-weight:900;
+color:#00ffff;
+text-shadow:0 0 20px #00ffff, 0 0 40px #00ffff;
+animation:glow 2s ease-in-out infinite alternate;
 }
 
-h1{
-font-family:'Great Vibes', cursive;
-font-size:3rem;
-color:#7a003c;
-margin-bottom:20px;
+@keyframes glow{
+from{ text-shadow:0 0 10px #00ffff; }
+to{ text-shadow:0 0 40px #00ffff, 0 0 80px #00ffff; }
 }
 
-p{
-font-size:1.15rem;
-max-width:600px;
-line-height:1.8;
+.hero p{
+margin-top:20px;
+font-size:1.2rem;
+color:#aaa;
 }
 
-.proposal{
-font-family:'Great Vibes', cursive;
-font-size:2.8rem;
-margin:30px 0;
-color:#a0004d;
-}
-
-button{
-padding:12px 26px;
-margin:10px;
-border:none;
-border-radius:30px;
-font-size:1rem;
+/* Buttons */
+.btn{
+margin-top:30px;
+padding:15px 40px;
+border:2px solid #00ffff;
+color:#00ffff;
+background:transparent;
 cursor:pointer;
-background:#a0004d;
-color:white;
+font-size:1rem;
 transition:0.3s;
 }
 
-button:hover{
-transform:scale(1.08);
-background:#7a003c;
+.btn:hover{
+background:#00ffff;
+color:black;
+box-shadow:0 0 20px #00ffff;
+transform:scale(1.1);
 }
 
-.response{
-margin-top:25px;
-font-size:1.2rem;
-opacity:0;
-transition:1s;
+/* Section */
+.section{
+padding:100px 20px;
+text-align:center;
 }
 
-/* floating hearts */
-.float{
-position:fixed;
-bottom:-20px;
-animation:floatUp linear infinite;
-opacity:0.9;
-z-index:-1;
+.card{
+margin:30px auto;
+padding:30px;
+max-width:300px;
+background:rgba(255,255,255,0.05);
+border:1px solid #00ffff;
+box-shadow:0 0 20px rgba(0,255,255,0.4);
+transition:0.4s;
 }
 
-@keyframes floatUp{
-0%{transform:translateY(0);}
-100%{transform:translateY(-110vh); opacity:0;}
+.card:hover{
+transform:translateY(-10px) scale(1.05);
+box-shadow:0 0 40px rgba(0,255,255,0.8);
 }
 </style>
 </head>
 
 <body>
 
-<div class="section">
-<h1>My dearest Shrijaa 💗</h1>
-<p>
-Even from miles away, you are the closest thing to my heart.  
-In quiet nights and busy days, it is always you.  
-Your name feels like warmth.  
-Your smile feels like home.
-</p>
+<div class="grid"></div>
+
+<div class="hero">
+<h1>RORO</h1>
+<p>Enter the next level of gaming reality</p>
+<button class="btn" onclick="enterGame()">ENTER GAME</button>
 </div>
 
 <div class="section">
-<p>
-Loving you from a distance has only made me realize  
-how deeply, gently, and truly I feel for you.  
-Every moment with you — even through a screen —  
-is something I treasure.
-</p>
+<h2 style="color:#00ffff;">Game Modes</h2>
+
+<div class="card">
+<h3>Battle Arena</h3>
+<p>Fight. Dominate. Survive.</p>
 </div>
 
-<div class="section">
-<div class="proposal">
-Shrijaa… will you be my Valentine?
-</div>
-<p style="font-size:0.9rem;">(you really can’t say no 😌)</p>
-
-<button onclick="sayYes()">Yes</button>
-<button onclick="sayYes()">Yes</button>
-
-<div class="response" id="responseMessage">
-I knew your heart would find mine 💗
-</div>
+<div class="card">
+<h3>Cyber Racing</h3>
+<p>Speed beyond limits.</p>
 </div>
 
-<audio id="bgMusic" loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c0a7b63a4.mp3?filename=romantic-piano-110083.mp3" type="audio/mp3">
-</audio>
+<div class="card">
+<h3>Zombie Survival</h3>
+<p>Only the strongest last.</p>
+</div>
+
+</div>
 
 <script>
-
-/* smooth scroll reveal */
-const sections = document.querySelectorAll(".section");
-function reveal(){
-sections.forEach(sec=>{
-if(sec.getBoundingClientRect().top < window.innerHeight - 100){
-sec.classList.add("show");
-}
-});
-}
-window.addEventListener("scroll",reveal);
-reveal();
-
-/* floating hearts */
-const symbols = ["💗","🌸","✨","💖"];
-setInterval(()=>{
-const el=document.createElement("div");
-el.classList.add("float");
-el.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
-el.style.left=Math.random()*100+"vw";
-el.style.fontSize=(Math.random()*18+14)+"px";
-el.style.animationDuration=(Math.random()*6+6)+"s";
-document.body.appendChild(el);
-setTimeout(()=>{ el.remove(); },10000);
-},400);
-
-/* music unlock */
-document.body.addEventListener("click",()=>{
-document.getElementById("bgMusic").play();
-},{once:true});
-
-/* proposal response inside page */
-function sayYes(){
-let msg = document.getElementById("responseMessage");
-msg.style.opacity = "1";
+function enterGame(){
+document.body.style.background = "black";
+alert("Welcome to RORO Gaming Mode 🎮🔥");
 }
 </script>
 
