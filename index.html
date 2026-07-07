@@ -1,257 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RORO ULTRA CORE</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-background:#03060f;
-font-family:'Orbitron',sans-serif;
-color:#00f2ff;
-overflow:hidden;
-}
-
-/* GLITCH INTRO */
-#intro{
-position:fixed;
-width:100%;
-height:100vh;
-background:black;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-z-index:100;
-animation:fadeOut 2s 3s forwards;
-}
-
-.glitch{
-font-size:2rem;
-position:relative;
-animation:glitch 1s infinite;
-}
-
-@keyframes glitch{
-0%{text-shadow:2px 0 red,-2px 0 cyan;}
-20%{text-shadow:-2px 0 red,2px 0 cyan;}
-40%{text-shadow:2px 2px red,-2px -2px cyan;}
-60%{text-shadow:-2px -2px red,2px 2px cyan;}
-80%{text-shadow:2px -2px red,-2px 2px cyan;}
-100%{text-shadow:-2px 2px red,2px -2px cyan;}
-}
-
-@keyframes fadeOut{
-to{opacity:0;visibility:hidden;}
-}
-
-/* LAYOUT */
-#app{
-display:flex;
-height:100vh;
-opacity:0;
-animation:fadeIn 1s 3s forwards;
-}
-
-@keyframes fadeIn{to{opacity:1;}}
-
-.sidebar{
-width:220px;
-border-right:1px solid #00f2ff;
-padding:20px;
-background:rgba(0,255,255,0.03);
-backdrop-filter:blur(10px);
-}
-
-.sidebar div{
-margin:25px 0;
-cursor:pointer;
-transition:0.3s;
-}
-
-.sidebar div:hover{
-transform:translateX(10px);
-color:white;
-}
-
-.content{
-flex:1;
-padding:40px;
-position:relative;
-overflow:hidden;
-}
-
-.panel{
-position:absolute;
-width:100%;
-opacity:0;
-transform:translateX(100px);
-transition:0.5s ease;
-}
-
-.panel.active{
-opacity:1;
-transform:translateX(0);
-}
-
-/* GAME AREAS */
-#dodgeArea, #clickArea{
-position:relative;
-width:100%;
-height:350px;
-border:1px solid #00f2ff;
-margin-top:20px;
-overflow:hidden;
-}
-
-.player{
-width:30px;
-height:30px;
-background:#00f2ff;
-position:absolute;
-bottom:10px;
-left:50%;
-transform:translateX(-50%);
-}
-
-.enemy{
-width:30px;
-height:30px;
-background:red;
-position:absolute;
-top:0;
-}
-
-.target{
-width:40px;
-height:40px;
-background:lime;
-position:absolute;
-border-radius:50%;
-}
-
-</style>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>For You ❤️</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div id="intro">
-<div class="glitch">RORO SYSTEM INITIALIZING</div>
-</div>
+<div class="stars"></div>
 
-<div id="app">
-<div class="sidebar">
-<div onclick="switchPanel('home')">HOME</div>
-<div onclick="switchPanel('dodge')">DODGE PROTOCOL</div>
-<div onclick="switchPanel('click')">TARGET STRIKE</div>
-</div>
+<div class="container">
 
-<div class="content">
+<h1 id="title">Hey... Don't scroll yet.</h1>
 
-<div id="home" class="panel active">
-<h2>WELCOME COMMANDER</h2>
-<p>System Online.</p>
-</div>
+<p id="text">
+I know you're upset.
+</p>
 
-<div id="dodge" class="panel">
-<h2>DODGE PROTOCOL</h2>
-<p>Score: <span id="score1">0</span></p>
-<div id="dodgeArea">
-<div class="player" id="player"></div>
-</div>
-</div>
-
-<div id="click" class="panel">
-<h2>TARGET STRIKE</h2>
-<p>Score: <span id="score2">0</span></p>
-<div id="clickArea"></div>
-</div>
+<button onclick="nextPage()">
+Take My Hand 🤍
+</button>
 
 </div>
-</div>
 
-<script>
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
 
-/* SOUND ENGINE */
-const ctxAudio=new (window.AudioContext||window.webkitAudioContext)();
+<script src="script.js"></script>
 
-function beep(freq,dur){
-let osc=ctxAudio.createOscillator();
-let gain=ctxAudio.createGain();
-osc.connect(gain);
-gain.connect(ctxAudio.destination);
-osc.frequency.value=freq;
-osc.start();
-gain.gain.exponentialRampToValueAtTime(0.0001,ctxAudio.currentTime+dur/1000);
-osc.stop(ctxAudio.currentTime+dur/1000);
-}
-
-/* PANEL SWITCH */
-function switchPanel(id){
-document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-beep(400,100);
-}
-
-/* DODGE GAME */
-let score1=0;
-const player=document.getElementById("player");
-const dodgeArea=document.getElementById("dodgeArea");
-
-document.addEventListener("mousemove",e=>{
-let rect=dodgeArea.getBoundingClientRect();
-if(e.clientX>rect.left && e.clientX<rect.right){
-player.style.left=(e.clientX-rect.left-15)+"px";
-}
-});
-
-setInterval(()=>{
-let enemy=document.createElement("div");
-enemy.classList.add("enemy");
-enemy.style.left=Math.random()*(dodgeArea.offsetWidth-30)+"px";
-dodgeArea.appendChild(enemy);
-
-let fall=setInterval(()=>{
-enemy.style.top=(enemy.offsetTop+5)+"px";
-if(enemy.offsetTop>320){
-score1++;
-document.getElementById("score1").innerText=score1;
-enemy.remove();
-clearInterval(fall);
-}
-
-let p=player.getBoundingClientRect();
-let e=enemy.getBoundingClientRect();
-if(p.left<e.right && p.right>e.left && p.top<e.bottom && p.bottom>e.top){
-alert("Game Over");
-location.reload();
-}
-},20);
-},1000);
-
-/* CLICK GAME */
-let score2=0;
-const clickArea=document.getElementById("clickArea");
-
-function spawnTarget(){
-let t=document.createElement("div");
-t.classList.add("target");
-t.style.left=Math.random()*(clickArea.offsetWidth-40)+"px";
-t.style.top=Math.random()*(clickArea.offsetHeight-40)+"px";
-clickArea.appendChild(t);
-
-t.onclick=()=>{
-score2++;
-document.getElementById("score2").innerText=score2;
-beep(800,80);
-t.remove();
-spawnTarget();
-}
-}
-
-spawnTarget();
-
-</script>
 </body>
 </html>
