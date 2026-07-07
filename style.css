@@ -2,106 +2,55 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Poppins,sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
 
 height:100vh;
+overflow:hidden;
+
 display:flex;
 justify-content:center;
 align-items:center;
 
 background:
-linear-gradient(135deg,#050816,#101b36);
+linear-gradient(135deg,
+#ff9ecb,
+#ffc2d8,
+#ffd6e8,
+#fff0f6);
 
-overflow:hidden;
-color:white;
-text-align:center;
+background-size:400% 400%;
+
+animation:bg 12s ease infinite;
+
+}
+
+@keyframes bg{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
 }
 
 .container{
 
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+
+}
+
+.glass{
+
 width:90%;
-max-width:500px;
-
-backdrop-filter:blur(20px);
-
-background:rgba(255,255,255,.08);
+max-width:420px;
 
 padding:40px;
 
-border-radius:25px;
+border-radius:30px;
 
-box-shadow:0 0 40px rgba(255,255,255,.1);
-
-}
-
-h1{
-
-margin-bottom:20px;
-font-size:33px;
-
-}
-
-p{
-
-font-size:18px;
-line-height:30px;
-
-margin-bottom:30px;
-
-}
-
-button{
-
-padding:15px 35px;
-
-border:none;
-
-border-radius:50px;
-
-font-size:18px;
-
-cursor:pointer;
-
-background:white;
-
-transition:.3s;
-
-}
-
-button:hover{
-
-transform:scale(1.1);
-
-}
-
-.stars{
-
-position:absolute;
-
-width:100%;
-height:100%;
-
-background:url("https://i.imgur.com/YKY28eT.png");
-
-animation:move 60s linear infinite;
-
-opacity:.3;
-
-}
-
-@keyframes move{
-
-0%{
-transform:translateY(0);
-}
-
-100%{
-
-transform:translateY(-1000px);
-
-}
-
-}
+background:rgba(255,255
