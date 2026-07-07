@@ -1,33 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>For You ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Favorite Person ❤️</title>
+
 <link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
-<div class="stars"></div>
+<!-- Floating Hearts -->
+<div class="hearts"></div>
+
+<!-- Floating Petals -->
+<div class="petals"></div>
+
+<!-- Music Button -->
+<button id="musicBtn">
+🎵
+</button>
+
+<audio id="bgMusic" loop>
+<source src="music.mp3" type="audio/mp3">
+</audio>
 
 <div class="container">
 
-<h1 id="title">Hey... Don't scroll yet.</h1>
+<div class="glass">
 
-<p id="text">
-I know you're upset.
+<h2 class="smallTitle">
+A Little Surprise...
+</h2>
+
+<h1 id="mainTitle">
+For The Girl Who Owns My Heart ❤️
+</h1>
+
+<p id="typingText">
+
+I don't know where to begin...
+
 </p>
 
-<button onclick="nextPage()">
-Take My Hand 🤍
+<div class="heartContainer">
+
+<div class="heart" onclick="nextStory()">
+
+❤️
+
+</div>
+
+<p class="tapText">
+Touch My Heart
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Hidden Story -->
+
+<div class="story hidden" id="story">
+
+<div class="storyCard">
+
+<h1 id="storyTitle">
+Hey Beautiful 🌸
+</h1>
+
+<p id="storyText">
+
+Thank you for opening my heart.
+
+</p>
+
+<button id="nextButton" onclick="nextStory()">
+
+Continue 💕
+
 </button>
 
 </div>
 
-<audio id="music" loop>
-<source src="music.mp3" type="audio/mpeg">
-</audio>
+</div>
 
 <script src="script.js"></script>
 
